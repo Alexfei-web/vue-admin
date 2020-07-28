@@ -74,7 +74,7 @@
 	}
 
 	.navbar .right {
-		padding-right: 20px;
+		padding-right: 10px;
 		margin-right: 20px;
 		padding-left: 20px;
 	}

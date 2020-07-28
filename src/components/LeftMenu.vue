@@ -1,7 +1,7 @@
 <template>
-	<el-menu default-active="2" router class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
+	<el-menu default-active="2" router class="el-menu-vertical-demo"
 	 background-color="#334e66" text-color="#fff" active-text-color="#ffd04b" :collapse="isCollapse">
-		<el-submenu index="1">
+		<!-- <el-submenu index="1">
 			<template slot="title">
 				<i class="el-icon-goods"></i>
 				<span>商品管理</span>
@@ -42,25 +42,41 @@
 			</template>
 			<el-menu-item index="/permissions/role">用户角色</el-menu-item>
 			<el-menu-item index="/permissions/menu">菜单权限</el-menu-item>
+		</el-submenu> -->
+		<el-submenu v-for="(item,index) in menuList" :key="item.id" :index="index+''">
+			<template slot="title">
+				<i :class="'el-icon-' + item.icon"></i>
+				<span>{{item.name}}</span>
+			</template>
+			<el-menu-item v-for="(item) in item.children" :key="item.id" :index="item.path">{{item.name}}</el-menu-item>
 		</el-submenu>
-		
 	</el-menu>
 </template>
 
 <script>
+	import { Role } from "@/api/index";
 	export default {
-		props:['isCollapse'],
+		created() {
+			this.loadMenu();
+		},
+		props: ["isCollapse"],
+		data() {
+			return {
+				menuList: [],
+			};
+		},
 		methods: {
-			handleOpen(key, keyPath) {
-				console.log(key, keyPath);
+			async loadMenu() {
+				var id = sessionStorage.role;
+				let { status, data } = await Role.menuGet({ id });
+				if (status) {
+					console.log(data);
+					this.menuList = data;
+				}
 			},
-			handleClose(key, keyPath) {
-				console.log(key, keyPath);
-			}
-		}
-	}
+		},
+	};
 </script>
 
 <style lang="less">
-
 </style>

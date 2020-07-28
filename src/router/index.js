@@ -12,19 +12,19 @@ const routes = [{
 		alias: '/',
 		name: 'Login',
 		component: () => import('@/views/Login.vue'),
-		// meta: { requiresAuth: false },
+		meta: { requiresAuth: false },
 	},
 	{
 		path: '/register',
 		name: 'Register',
 		component: () => import('@/views/Register.vue'),
-		// meta: { requiresAuth: false },
+		meta: { requiresAuth: false },
 	},
 	{
-		path: '/good/',
+		path: '/goods/',
 		name: 'Good',
 		component: Layout,
-		// meta: { requiresAuth: true },
+		meta: { requiresAuth: true },
 		children: [{
 				path: 'category',
 				name: 'GoodCategory',
@@ -53,7 +53,7 @@ const routes = [{
 		path: '/order/',
 		name: 'Order',
 		component: Layout,
-		// meta: { requiresAuth: true },
+		meta: { requiresAuth: true },
 		children: [{
 				path: 'list',
 				name: 'OrderList',
@@ -61,12 +61,12 @@ const routes = [{
 			}]
 	},
 	{
-		path: '/account/',
+		path: '/user/',
 		name: 'Account',
 		component: Layout,
-		// meta: { requiresAuth: true },
+		meta: { requiresAuth: true },
 		children: [{
-				path: 'content',
+				path: 'info',
 				name: 'AccountContent',
 				component: () => import('@/views/Account/Content.vue')
 			}]
@@ -75,7 +75,7 @@ const routes = [{
 		path: '/user/',
 		name: 'User',
 		component: Layout,
-		// meta: { requiresAuth: true },
+		meta: { requiresAuth: true },
 		children: [{
 				path: 'list',
 				name: 'UserList',
@@ -83,10 +83,10 @@ const routes = [{
 			}]
 	},
 	{
-		path: '/permissions/',
+		path: '/auth/',
 		name: 'Permissions',
 		component: Layout,
-		// meta: { requiresAuth: true },
+		meta: { requiresAuth: true },
 		children: [{
 				path: 'menu',
 				name: 'permissionsMenu',

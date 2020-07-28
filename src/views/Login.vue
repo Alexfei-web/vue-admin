@@ -43,8 +43,8 @@
 						},
 						{
 							min: 1,
-							max: 5,
-							message: '长度在 1 到 5 个字符',
+							max: 11,
+							message: '长度在 1 到 11 个字符',
 							trigger: 'blur'
 						}
 					],
@@ -85,7 +85,7 @@
 							this.$router.replace(redirect);
 						}
 						//默认跳转路由
-						this.$router.replace('/good/list');
+						this.$router.replace('/goods/list');
 					} else {
 						this.$message.error(msg);
 					}
